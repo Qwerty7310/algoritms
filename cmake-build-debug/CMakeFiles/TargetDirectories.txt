@@ -1,0 +1,3 @@
+C:/Users/daniil/CLionProjects/Lections/3term_Alg_laba1/cmake-build-debug/CMakeFiles/3term_Alg_laba1.dir
+C:/Users/daniil/CLionProjects/Lections/3term_Alg_laba1/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/daniil/CLionProjects/Lections/3term_Alg_laba1/cmake-build-debug/CMakeFiles/rebuild_cache.dir

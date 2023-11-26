@@ -1,0 +1,8 @@
+#ifndef INC_3TERM_ALG_LABA1_FLOYDWARSHALL_H
+#define INC_3TERM_ALG_LABA1_FLOYDWARSHALL_H
+
+#include "fun.h"
+
+void FloydWarshall(int [][N]);
+
+#endif //INC_3TERM_ALG_LABA1_FLOYDWARSHALL_H
