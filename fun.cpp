@@ -14,3 +14,11 @@ void PrintPred(int *pred)
     for (int i = 0; i < N; i++)
         cout << pred[i] << '(' << i << ") ";
 }
+
+void PrintMas(int* name,int size)
+{
+    for (int i=0;i<size;++i){
+        cout<<name[i]<< '(' << i << ") ";
+    }
+    cout<<"\n";
+}
