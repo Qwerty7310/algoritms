@@ -10,38 +10,33 @@ void alg_Prima(int G[N][N])
     int min_index;
     int i_index;
     int s;
-    for (int i=0;i<N;++i){
+    for (int i=0;i<N;++i){//цикл поиска минимального ребра и стартового значения
         for (int j=0;j<N;++j){
-            if (G[i][j]!=-1 && G[i][j]<min){
-                min=G[i][j];
-                s=i;
+            if (G[i][j]!=-1 && G[i][j]<min){//если ребро существует и вес ребра меньше минимального значения
+                min=G[i][j];// меняем минимальное значение
+                s=i;//определяем стартовое значение
             }
         }
     }
     int visited[N]{0};
-    visited[s]=1;
-    int size_mas=1;
+    visited[s]=1;//ставим для начального значения начение visited 1
+    int size_mas=1;// начальный размер массива U
     int* U = new int[size_mas]{ s };
-    int* new_U;
-    int min_stoimost=0;
-    way *head = new way;
+    int* new_U;//новый массив с помощью которого будем добавлять эл-ты в конец массива U
+    int min_stoimost=0;//минимальная стоимость
+    way *head = new way;//структура way для вывода связей,на которых строится остовное дерево
 
-    while (size_mas !=N)
+    while (size_mas !=N)//пока размер массива U не равен кол-ву звеньев
     {
         min = INT_MAX;
-        if (s>5){
-            cout<<"Не может быть такого стартового значения\n";
-            return;
-        }
-
         way* temp=new way;
-        for (int i = 0; i < size_mas; ++i)//TODO для другого стартового значения сделать
+        for (int i = 0; i < size_mas; ++i)//цикл для прохода по массиву U
         {
-            for (int j=0;j<N;++j){
-                if (visited[j]==0 && G[(U[i])%N][j]!=-1 && G[(U[i])%N][j]<min){
-                    min=G[(U[i])%N][j];
-                    min_index=j;
-                    i_index=(U[i])%N;
+            for (int j=0;j<N;++j){//цикл для нахождения в графе G минимального ребра
+                if (visited[j]==0 && G[(U[i])%N][j]!=-1 && G[(U[i])%N][j]<min){//если звено не посещали и ребра между звеньями сущ-т и оно минимально
+                    min=G[(U[i])%N][j]; //минимальный вес
+                    min_index=j;//минимальный индекс по i
+                    i_index=(U[i])%N; //минимальный индекс по j
 //                    cout<<i_index<<"\n";
 //                    cout<<min_index<<"\n";
                 }
@@ -50,24 +45,14 @@ void alg_Prima(int G[N][N])
         cout<<"min: "<<min<<"\n";
         cout<<"i_index: "<<i_index<<"\n";
         cout<<"min_index: "<<min_index<<"\n";
-        head->i=i_index;
+        head->i=i_index;//записываем звенья, между которыми минимальная связь в параметры i и j
         head->j=min_index;
         temp->next=head;
-        head=temp;
-//        for (int i = 0; i < size_mas; ++i)
-//        {
-//            for (int j=0;j<N;++j){
-//                if (G[U[i]][j]!=-1 && G[U[i]][j]<min && visited[j]==0){
-//                    min=G[U[i]][j];
-//                    i_index=i;
-//                    min_index=j;
-//                }
-//            }
-//        }
-        min_stoimost+=min;//TODO сделать остовное дерево
+        head=temp;//присваиваем head'у temp
+        min_stoimost+=min;
         cout<<"min_stoimost: "<<min_stoimost<<"\n";
         visited[min_index]=1;
-        new_U = new int[size_mas+1];
+        new_U = new int[size_mas+1];//добавляем в конец массива новый эл-т
         for (int i = 0; i < size_mas; ++i)
         {
             new_U[i] = U[i];
@@ -86,13 +71,13 @@ void alg_Prima(int G[N][N])
         cout<<"print U:\n";
         PrintMas(U,size_mas);
     }
-    for (int i=0;i<size_mas;++i){
+    for (int i=0;i<size_mas;++i){//вывод полученногор массива для  минимальной стоимости остовного дерева
         cout<<U[i]<<"("<<i<<")  ";
     }
     delete U;
     cout<<"\nМинимальная стоимость: "<<min_stoimost<<"\n";
     way *p = head->next;
-    cout<<"Путь:\n";
+    cout<<"Рёбра остовного дерева:\n";
     while (p != nullptr)
     {
         cout <<p->i <<" -> " << p->j<<" ";
