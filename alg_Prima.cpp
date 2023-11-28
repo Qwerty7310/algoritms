@@ -4,17 +4,26 @@
 
 
 
-void alg_Prima(int G[N][N], int s)
+void alg_Prima(int G[N][N])
 {
+    int min = INT_MAX;
+    int min_index;
+    int i_index;
+    int s;
+    for (int i=0;i<N;++i){
+        for (int j=0;j<N;++j){
+            if (G[i][j]!=-1 && G[i][j]<min){
+                min=G[i][j];
+                s=i;
+            }
+        }
+    }
     int visited[N]{0};
     visited[s]=1;
     int size_mas=1;
     int* U = new int[size_mas]{ s };
     int* new_U;
     int min_stoimost=0;
-    int min = INT_MAX;
-    int min_index;
-    int i_index;
     way *head = new way;
 
     while (size_mas !=N)
@@ -24,6 +33,7 @@ void alg_Prima(int G[N][N], int s)
             cout<<"Не может быть такого стартового значения\n";
             return;
         }
+
         way* temp=new way;
         for (int i = 0; i < size_mas; ++i)//TODO для другого стартового значения сделать
         {
@@ -32,16 +42,16 @@ void alg_Prima(int G[N][N], int s)
                     min=G[(U[i])%N][j];
                     min_index=j;
                     i_index=(U[i])%N;
-                    cout<<i_index<<"\n";
-                    cout<<min_index<<"\n";
+//                    cout<<i_index<<"\n";
+//                    cout<<min_index<<"\n";
                 }
             }
         }
         cout<<"min: "<<min<<"\n";
         cout<<"i_index: "<<i_index<<"\n";
         cout<<"min_index: "<<min_index<<"\n";
-        temp->i=i_index;
-        temp->j=min_index;
+        head->i=i_index;
+        head->j=min_index;
         temp->next=head;
         head=temp;
 //        for (int i = 0; i < size_mas; ++i)
@@ -54,7 +64,7 @@ void alg_Prima(int G[N][N], int s)
 //                }
 //            }
 //        }
-        min_stoimost+=min;//TODO сделать оставное дерево
+        min_stoimost+=min;//TODO сделать остовное дерево
         cout<<"min_stoimost: "<<min_stoimost<<"\n";
         visited[min_index]=1;
         new_U = new int[size_mas+1];
@@ -85,7 +95,8 @@ void alg_Prima(int G[N][N], int s)
     cout<<"Путь:\n";
     while (p != nullptr)
     {
-        cout <<p->i <<" -> " << p->j<<"; ";
+        cout <<p->i <<" -> " << p->j<<" ";
         p = p->next;
     }
+    cout<<"\n";
 }

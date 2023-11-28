@@ -74,6 +74,6 @@ int main() {
         }
         cout<<"\n";
     }
-    alg_Prima(matrixPrima,1);
+    alg_Prima(matrixPrima);
     return 0;
 }
