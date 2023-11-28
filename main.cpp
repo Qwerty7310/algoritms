@@ -55,19 +55,37 @@ int main() {
 //    cout << endl;
 //
 //    system("PAUSE");
-    int matrixPrima[N][N];
-    for (int i=0;i<N;++i){
-        for (int j=0;j<N;++j){
-            if (matrixDijkstra[i][j]!=-1){
-                matrixPrima[i][j]=matrixDijkstra[i][j];
-                matrixPrima[j][i]=matrixDijkstra[i][j];
-            }
-            if (matrixDijkstra[i][j]==-1 && matrixDijkstra[j][i]==-1){
-                matrixPrima[i][j]=-1;
-                matrixPrima[j][i]=-1;
-            }
-        }
-    }
+//    int matrixPrima[N][N];
+//    for (int i=0;i<N;++i){
+//        for (int j=0;j<N;++j){
+//            if (matrixDijkstra[i][j]!=-1){
+//                matrixPrima[i][j]=matrixDijkstra[i][j];
+//                matrixPrima[j][i]=matrixDijkstra[i][j];
+//            }
+//            if (matrixDijkstra[i][j]==-1 && matrixDijkstra[j][i]==-1){
+//                matrixPrima[i][j]=-1;
+//                matrixPrima[j][i]=-1;
+//            }
+//        }
+//    }
+//    for (int i=0;i<N;++i){
+//        for (int j=0;j<N;++j){
+//            cout<<matrixPrima[i][j]<<"\t";
+//        }
+//        cout<<"\n";
+//    }
+    int matrixPrima[N][N] = {
+            -1, 20, -1, 16, -1, 11, -1, -1, -1, -1,
+            20, -1, 6, -1, 1, -1, -1, -1, -1, -1,
+            -1, 6, -1, -1, -1, -1, 17, -1, -1, -1,
+            16, -1, -1, -1, 3, 7, -1, 9, 1, 3,
+            -1, 1, -1, 3, -1, -1, 1, -1, -1, 4,
+            11, -1, -1, 7, -1, -1, -1, 6, -1, -1,
+            -1, -1, 17, -1, 1, -1, -1, -1, -1, 21,
+            -1, -1, -1, 9, -1, 6, -1, -1, 2, -1,
+            -1, -1, -1, 1, -1, -1, -1, 2, -1, 5,
+            -1, -1, -1, 3, 4, -1, 21, -1, 5, -1,
+    };
     for (int i=0;i<N;++i){
         for (int j=0;j<N;++j){
             cout<<matrixPrima[i][j]<<"\t";

@@ -6,7 +6,7 @@
 
 using namespace std;
 
-const int N = 6;
+const int N = 10;
 
 struct list
 {
@@ -14,11 +14,6 @@ struct list
     list *next = nullptr;
 };
 
-struct way{
-    way* next=nullptr;
-    int i;
-    int j;
-};
 void PrintShortest(int*);
 void PrintPred(int*);
 void PrintMas(int* name,int size);

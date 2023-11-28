@@ -1,6 +1,5 @@
 
 #include "alg_Prima.h"
-#include "fun.h"
 
 
 
