@@ -83,11 +83,14 @@ void alg_Prima(int G[N][N])
     }
     delete[] U;
     std::cout << "\nМинимальная стоимость: " << min_stoimost << "\n";
-    way* p = head->next;
-    std::cout << "Путь:\n";
+    way* p = head;
+    std::cout << "Рёбра остовного дерева:\n";
     while (p != nullptr)
     {
-        std::cout << p->i << " -> " << p->j << " ";
+        if (!(p->i == 0 && p->j == 0)) // добавлено условие
+        {
+            std::cout << p->i << " -> " << p->j << " ";
+        }
         p = p->next;
     }
     cout<<"\n";
