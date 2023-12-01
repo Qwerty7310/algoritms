@@ -2,21 +2,21 @@
 #include "BellmanFord.h"
 #include "FloydWarshall.h"
 #include <climits>
-#include "alg_Prima.h"
-
+//#include "alg_Prima.h"
+#include "Prima.h"
 int main() {
     system("chcp 65001"); //подключение русского языка
     system("cls"); //очистка консоли
-    int matrixDijkstra[N][N] = {
-            -1,6,8,18,-1,-1,
-            -1,-1,-1,-1,11,-1,
-            -1,-1,-1,9,-1,-1,
-            -1,-1,-1,-1,-1,-1,
-            -1,-1,-1,-1,-1,3,
-            -1,-1,7,4,-1,-1,
-    };
+//    int matrix_for_BF[N][N] = {
+//            -1,6,8,18,-1,-1,
+//            -1,-1,-1,-1,11,-1,
+//            -1,-1,-1,9,-1,-1,
+//            -1,-1,-1,-1,-1,-1,
+//            -1,-1,-1,-1,-1,3,
+//            -1,-1,7,4,-1,-1,
+//    };
 //
-//    /*int matrixDijkstra[N][N] = {
+//    /*int matrix_for_BF[N][N] = {
 //            -1,3,4,2,-1,-1,-1,-1,-1,-1,
 //            -1,-1,-1,-1,-1,3,-1,-1,-1,-1,
 //            -1,-1,-1,-1,-1,6,-1,-1,-1,-1,
@@ -30,68 +30,64 @@ int main() {
 //    };*/
 //
 //    int matrixBF[N][N] = {
-//            INT_MAX,6,8,18,INT_MAX,INT_MAX,
-//            INT_MAX,INT_MAX,INT_MAX,INT_MAX,11,INT_MAX,
-//            INT_MAX,INT_MAX,INT_MAX,9,INT_MAX,INT_MAX,
-//            INT_MAX,INT_MAX,INT_MAX,INT_MAX,INT_MAX,INT_MAX,
-//            INT_MAX,INT_MAX,INT_MAX,INT_MAX,INT_MAX,3,
-//            INT_MAX,INT_MAX,7,4,INT_MAX,INT_MAX,
+//            -1,6,8,18,-1,-1,
+//            -1,-1,-1,-1,11,-1,
+//            -1,-1,-1,9,-1,-1,
+//            -1,-1,-1,-1,-1,-1,
+//            -1,-1,-1,-1,-1,3,
+//            -1,-1,7,4,-1,-1,
 //    };
 //
 //    int matrixFW[N][N] = {
-//            INT_MAX,6,8,18,INT_MAX,INT_MAX,
-//            INT_MAX,INT_MAX,INT_MAX,INT_MAX,11,INT_MAX,
-//            INT_MAX,INT_MAX,INT_MAX,9,INT_MAX,INT_MAX,
-//            INT_MAX,INT_MAX,INT_MAX,INT_MAX,INT_MAX,INT_MAX,
-//            INT_MAX,INT_MAX,INT_MAX,INT_MAX,INT_MAX,3,
-//            INT_MAX,INT_MAX,7,4,INT_MAX,INT_MAX,
+//            -1,6,8,18,-1,-1,
+//            -1,-1,-1,-1,11,-1,
+//            -1,-1,-1,9,-1,-1,
+//            -1,-1,-1,-1,-1,-1,
+//            -1,-1,-1,-1,-1,3,
+//            -1,-1,7,4,-1,-1,
 //    };
 //
 //    int src = 1;
-//    Dijkstra(matrixDijkstra, 0, 5);
+//    Dijkstra(matrix_for_BF, 0, 5);
 ////   BellmanFord(matrixBF, src);
 //    FloydWarshall(matrixFW);
 //
 //    cout << endl;
 //
 //    system("PAUSE");
-//    int matrixPrima[N][N];
-//    for (int i=0;i<N;++i){
-//        for (int j=0;j<N;++j){
-//            if (matrixDijkstra[i][j]!=-1){
-//                matrixPrima[i][j]=matrixDijkstra[i][j];
-//                matrixPrima[j][i]=matrixDijkstra[i][j];
-//            }
-//            if (matrixDijkstra[i][j]==-1 && matrixDijkstra[j][i]==-1){
-//                matrixPrima[i][j]=-1;
-//                matrixPrima[j][i]=-1;
-//            }
-//        }
-//    }
-//    for (int i=0;i<N;++i){
-//        for (int j=0;j<N;++j){
-//            cout<<matrixPrima[i][j]<<"\t";
-//        }
-//        cout<<"\n";
-//    }
-    int matrixPrima[N][N] = {
-            -1, 20, -1, 16, -1, 11, -1, -1, -1, -1,
-            20, -1, 6, -1, 1, -1, -1, -1, -1, -1,
-            -1, 6, -1, -1, -1, -1, 17, -1, -1, -1,
-            16, -1, -1, -1, 3, 7, -1, 9, 1, 3,
-            -1, 1, -1, 3, -1, -1, 1, -1, -1, 4,
-            11, -1, -1, 7, -1, -1, -1, 6, -1, -1,
-            -1, -1, 17, -1, 1, -1, -1, -1, -1, 21,
-            -1, -1, -1, 9, -1, 6, -1, -1, 2, -1,
-            -1, -1, -1, 1, -1, -1, -1, 2, -1, 5,
-            -1, -1, -1, 3, 4, -1, 21, -1, 5, -1,
+    int matrix_for_BF[N][N] = {
+            -1, 20,-1,16,-1,11,-1,-1,-1,-1,
+            -1, -1,6,-1,1,-1,-1,-1,-1,-1,
+            -1, -1,-1,-1,-1,-1,5,-1,-1,-1,
+            -1, -1,-1,-1,3,-1,-1,9,1,3,
+            -1, -1,-1,-1,-1,-1,1,-1,-1,4,
+            -1, -1,-1,7,-1,-1,-1,-1,-1,-1,
+            -1, -1,-1,-1,-1,-1,-1,-1,-1,2,
+            -1, -1,-1,-1,-1,6,-1,-1,-1,-1,
+            -1, -1,-1,-1,-1,-1,-1,2,-1,-1,
+            -1, -1,-1,-1,-1,-1,-1,-1,5,-1,
     };
+
+    int matrixPrima[N][N];
+    for (int i=0;i<N;++i){
+        for (int j=0;j<N;++j){
+            if (matrix_for_BF[i][j]!=-1){
+                matrixPrima[i][j]=matrix_for_BF[i][j];
+                matrixPrima[j][i]=matrix_for_BF[i][j];
+            }
+            if (matrix_for_BF[i][j]==-1 && matrix_for_BF[j][i]==-1){
+                matrixPrima[i][j]=-1;
+                matrixPrima[j][i]=-1;
+            }
+        }
+    }
     for (int i=0;i<N;++i){
         for (int j=0;j<N;++j){
             cout<<matrixPrima[i][j]<<"\t";
         }
         cout<<"\n";
     }
+
     alg_Prima(matrixPrima);
     return 0;
 }

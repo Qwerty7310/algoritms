@@ -13,4 +13,5 @@ add_executable(3term_Alg_laba1 main.cpp
         BellmanFord.cpp
         BellmanFord.h
         alg_Kruskala.cpp
-        alg_Prima.cpp)
+        Prima.cpp
+        Prima.h)
